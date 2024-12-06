@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "firebase-admin": "^13.0.1",
+    "google-cloud-storage": "^2.0.2",
+    "multer": "^1.4.5-lts.1",
+    "multer-google-storage": "^1.3.0",
+    "uuid": "^11.0.3"
+  },
+  "name": "backend-api",
+  "version": "1.0.0",
+  "description": "backend api for Asclepius app from dicoding assignment",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "ibnu fadhil",
+  "license": "ISC"
+}
