@@ -1,7 +1,7 @@
 const admin = require("firebase-admin");
 const path = require("path");
 
-const databaseKeyPath = path.resolve(__dirname, "../utils/databasekey.json");
+const databaseKeyPath = path.resolve(__dirname, "../databaseKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(require(databaseKeyPath)),
 });
