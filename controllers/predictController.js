@@ -32,7 +32,7 @@ const predictHandler = async (req, res) => {
     };
     await savePrediction(imageId, predictionData);
 
-    return res.status(200).json({
+    return res.status(201).json({
       status: "success",
       message: "Model is predicted successfully",
       data: predictionData,
