@@ -12,8 +12,8 @@ const app = express();
 app.use(bodyParser.json());
 
 // Resolve paths to key files
-const storageKeyPath = path.resolve(__dirname, "./utils/storageKey.json");
-const databaseKeyPath = path.resolve(__dirname, "./utils/databaseKey.json");
+const storageKeyPath = path.resolve(__dirname, "./storageKey.json");
+const databaseKeyPath = path.resolve(__dirname, "./databaseKey.json");
 
 // Initialize Google Cloud Storage
 const storage = new Storage({ keyFilename: storageKeyPath });
@@ -101,7 +101,7 @@ app.post("/predict", upload.single("image"), async (req, res) => {
     };
     await db.collection("predictions").doc(imageId).set(data);
 
-    return res.status(200).json({
+    return res.status(201).json({
       status: "success",
       message: "Model is predicted successfully",
       data,
@@ -127,7 +127,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
