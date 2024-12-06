@@ -48,7 +48,11 @@ let model;
 // Predict endpoint
 app.post("/predict", upload.single("image"), async (req, res) => {
   try {
+    console.log("Received request for prediction");
+
+    // Validasi apakah file dikirim
     if (!req.file) {
+      console.error("No file uploaded");
       return res.status(400).json({
         status: "fail",
         message: "No file uploaded",
@@ -56,14 +60,19 @@ app.post("/predict", upload.single("image"), async (req, res) => {
     }
 
     const { buffer, mimetype } = req.file;
+
+    // Validasi tipe file
     if (!mimetype.startsWith("image/")) {
+      console.error("Invalid file type:", mimetype);
       return res.status(400).json({
         status: "fail",
         message: "Invalid file type. Please upload an image.",
       });
     }
 
-    // Upload image to the specified folder in Cloud Storage
+    console.log("File uploaded successfully. Processing image...");
+
+    // Upload image to Cloud Storage
     const imageId = uuidv4();
     const filePath = `uploaded_images/${imageId}`;
     const file = bucket.file(filePath);
@@ -71,44 +80,57 @@ app.post("/predict", upload.single("image"), async (req, res) => {
       contentType: req.file.mimetype,
     });
 
-    // Generate the public URL
     const imageUrl = `https://storage.googleapis.com/${bucket.name}/${filePath}`;
+    console.log("Image uploaded to Cloud Storage:", imageUrl);
 
-    // Perform prediction
+    // Decode dan buat prediksi
     const imageTensor = tf.node
       .decodeJpeg(buffer)
       .resizeNearestNeighbor([224, 224])
       .expandDims()
       .toFloat();
 
+    console.log("Image tensor created. Running prediction...");
     const prediction = model.predict(imageTensor).dataSync();
 
-    // Determine result based on prediction
-    const isCancer = prediction[0] > 0.5; // Assuming binary classification: 1 = Cancer, 0 = Non-Cancer
+    if (!prediction) {
+      console.error("Prediction failed");
+      return res.status(500).json({
+        status: "fail",
+        message: "Model prediction failed",
+      });
+    }
+
+    // Tentukan hasil prediksi
+    const isCancer = prediction[0] > 0.5; // 1 = Cancer, 0 = Non-Cancer
     const result = isCancer ? "Cancer" : "Non-cancer";
     const suggestion = isCancer
       ? "Segera periksa ke dokter!"
       : "Penyakit kanker tidak terdeteksi.";
 
-    // Save prediction result to Firestore
     const createdAt = new Date().toISOString();
     const data = {
       id: imageId,
       result,
       suggestion,
       createdAt,
-      imageUrl, // Include the image URL in the response
+      imageUrl,
     };
+
+    console.log("Prediction result:", data);
+
+    // Simpan ke Firestore
     await db.collection("predictions").doc(imageId).set(data);
 
+    // Berikan respons sukses
     return res.status(201).json({
       status: "success",
       message: "Model is predicted successfully",
       data,
     });
   } catch (error) {
-    console.error("Prediction Error:", error);
-    return res.status(201).json({
+    console.error("Error in prediction endpoint:", error);
+    return res.status(500).json({
       status: "fail",
       message: "Terjadi kesalahan dalam melakukan prediksi",
     });
@@ -127,7 +149,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
