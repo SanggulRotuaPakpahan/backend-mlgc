@@ -108,7 +108,7 @@ app.post("/predict", upload.single("image"), async (req, res) => {
     });
   } catch (error) {
     console.error("Prediction Error:", error);
-    return res.status(400).json({
+    return res.status(201).json({
       status: "fail",
       message: "Terjadi kesalahan dalam melakukan prediksi",
     });
