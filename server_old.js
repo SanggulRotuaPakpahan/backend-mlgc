@@ -17,7 +17,7 @@ const databaseKeyPath = path.resolve(__dirname, "./utils/databaseKey.json");
 
 // Initialize Google Cloud Storage
 const storage = new Storage({ keyFilename: storageKeyPath });
-const bucketName = "submissionmlgc-ibnufadhil-mlmodel";
+const bucketName = "ml-models-asclepius";
 const bucket = storage.bucket(bucketName);
 
 // Initialize Firebase Admin
@@ -127,7 +127,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
