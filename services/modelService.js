@@ -1,6 +1,6 @@
 const tf = require("@tensorflow/tfjs-node");
 
-const modelUrl = "https://storage.googleapis.com/ml-models-asclepius/models/model.json";
+const modelUrl = "https://storage.googleapis.com/submissionmlgc-ibnufadhil-mlmodel/ml-model/model.json";
 let model;
 
 const loadModel = async () => {
@@ -17,22 +17,13 @@ const predictImage = async (buffer) => {
     .expandDims()
     .toFloat();
 
-  const prediction = await model.predict(tensor).data();
-    const result = prediction[0] > 0.5 ? 'Cancer' : 'Non-cancer';
+  const prediction = model.predict(imageTensor).dataSync();
+  const isCancer = prediction[0] > 0.5;
 
-    let suggestion;
-
-    if (result === 'Cancer') {
-      suggestion = 'Segera periksa ke dokter!';
-    } else if (result === 'Non-cancer') {
-      suggestion = 'Penyakit kanker tidak terdeteksi.';
-    }
-  
-    return { result, suggestion };
-  } catch (error) {
-    throw new InputError('Terjadi kesalahan dalam melakukan prediksi');
-  }
-
+  return {
+    result: isCancer ? "Cancer" : "Non-cancer",
+    suggestion: isCancer ? "Segera periksa ke dokter!" : "Penyakit kanker tidak terdeteksi.",
+  };
 };
 
 module.exports = { predictImage };
