@@ -4,7 +4,7 @@ const getHistoryHandler = async (req, res) => {
   try {
     const histories = await getPredictionHistories();
 
-    return res.status(201).json({
+    return res.status(200).json({
       status: "success",
       data: histories,
     });
