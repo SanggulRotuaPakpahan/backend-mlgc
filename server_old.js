@@ -82,7 +82,7 @@ app.post("/predict", upload.single("image"), async (req, res) => {
 
     const imageUrl = `https://storage.googleapis.com/${bucket.name}/${filePath}`;
     console.log("Image uploaded to Cloud Storage:", imageUrl);
-
+    
     // Decode dan buat prediksi
     const imageTensor = tf.node
       .decodeJpeg(buffer)
@@ -90,17 +90,10 @@ app.post("/predict", upload.single("image"), async (req, res) => {
       .expandDims()
       .toFloat();
 
-    console.log("Image tensor created. Running prediction...");
+    
     const prediction = model.predict(imageTensor).dataSync();
 
-    if (!prediction) {
-      console.error("Prediction failed");
-      return res.status(500).json({
-        status: "fail",
-        message: "Model prediction failed",
-      });
-    }
-
+    
     // Tentukan hasil prediksi
     const isCancer = prediction[0] > 0.5; // 1 = Cancer, 0 = Non-Cancer
     const result = isCancer ? "Cancer" : "Non-cancer";
@@ -123,14 +116,14 @@ app.post("/predict", upload.single("image"), async (req, res) => {
     await db.collection("predictions").doc(imageId).set(data);
 
     // Berikan respons sukses
-    return res.status(201).json({
+    return res.status(200).json({
       status: "success",
       message: "Model is predicted successfully",
       data,
     });
   } catch (error) {
     console.error("Error in prediction endpoint:", error);
-    return res.status(500).json({
+    return res.status(400).json({
       status: "fail",
       message: "Terjadi kesalahan dalam melakukan prediksi",
     });
