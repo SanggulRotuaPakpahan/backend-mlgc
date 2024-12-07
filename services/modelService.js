@@ -17,13 +17,22 @@ const predictImage = async (buffer) => {
     .expandDims()
     .toFloat();
 
-  const prediction = model.predict(imageTensor).dataSync();
-  const isCancer = prediction[0] > 0.5;
+  const prediction = await model.predict(tensor).data();
+    const result = prediction[0] > 0.5 ? 'Cancer' : 'Non-cancer';
 
-  return {
-    result: isCancer ? "Cancer" : "Non-cancer",
-    suggestion: isCancer ? "Segera periksa ke dokter!" : "Penyakit kanker tidak terdeteksi.",
-  };
+    let suggestion;
+
+    if (result === 'Cancer') {
+      suggestion = 'Segera periksa ke dokter!';
+    } else if (result === 'Non-cancer') {
+      suggestion = 'Penyakit kanker tidak terdeteksi.';
+    }
+  
+    return { result, suggestion };
+  } catch (error) {
+    throw new InputError('Terjadi kesalahan dalam melakukan prediksi');
+  }
+
 };
 
 module.exports = { predictImage };
