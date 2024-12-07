@@ -1,6 +1,6 @@
 const tf = require("@tensorflow/tfjs-node");
 
-const modelUrl = "https://storage.googleapis.com/submissionmlgc-ibnufadhil-mlmodel/ml-model/model.json";
+const modelUrl = "https://storage.googleapis.com/ml-models-asclepius/models/model.json";
 let model;
 
 const loadModel = async () => {
