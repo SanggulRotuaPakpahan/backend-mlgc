@@ -1,0 +1,14 @@
+{
+    "type": "service_account",
+    "project_id": "submissionmlgc-sanggulrotuap",
+    "private_key_id": "eac764998294dd8384d8fa7d81ab22781650569c",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDFpm29fAmFlUmQ\n9RRPQqE1mVOg4+2Fqh4PbIDY/v19Nqn9iGVRcrlQSLvK7QdIy1OF7P+vD7WyVP3c\nUW3zsF6mgG1OKdduyeldqm/92fG8gKoXFUCwVk7fSRvz+l0qNPJzkQrP+1irAKAy\nE5dO5ISsAE88Eipx624TtAlljQoLHERruNigF6a7hZ3Ncl9j91fnH8NG37pNjux8\n7NqitcpMYFsORt0DiMzEcenz76SSs4qHMCNbGnqMdQnc9Q48hHnQOTkYw01/sfC4\nVDT2gcOx+cFLlB7C42WzrvDnqgBO3gx7XcMpkLwXdKVlV7aB3ktLAidfAj0/EQgi\nq974Jty3AgMBAAECggEAX3qdarq/sstCRYdO71cFn2nZL1DMDhT2/oZw2+KaO+Gr\nTrGUGDtub+0i4s2MBktKptitTzkskeBi3gpsLhtWLeK+atLlojxhwoCyJxQgpeoV\nwJ7gqA6ZfV3I5hxc4yW+tbssWPpXhAwCVw6FunPD738ax68S2ANeIqCHJYpzfpeo\nbFDAtKhEbzrjByHIGIKU/6eHGBx7zO5GANhjk5rr2AxEnBomOyX3izZ6aq10YsQ+\nFWrgZAlRMEFzYvJKp2i+55vVCpRlJkSrZEUE8uMwfoBtlLFTNZh1uGRTUw2g4tOe\nXELEPazSDvtCNu1PEeclaX2rMopZCM362Qg3NvYAWQKBgQDvOihKlMfyAWaU5UyP\ndK3dXeg+GVoqqFShr43omsxl8WsRQ84Eg8SIR3pLA93s60pe8lOfJ0+dB5oc6X9Y\nPMgTtsC619idmZ2iliA0wuPARpCB8Co/dUTbF/n/5HB8hzwkE1PL72yHMP6Ec1ng\ntZUkIjDvv1r4+YsHPaSylUsOGwKBgQDTggM1XjHeBOIiwhZwR/RX5qoab2tYslGQ\nkZhBvH79lqQpmMz4tDIe4MAardxXEBjsoBXXP3q0jtH8NNbOBoA2AAaP2INAQ4ps\nML0dvbxn+04cEW0G1Dt/3vmrCCZHPCh8AyWTcLLEl9Ilz8hm2qMPfoF3Rrmy0PxI\nXkFeFyVllQKBgBsaarAwdQq9D+M0q1zhakVXO1W1x5pnodcDrb85soimNmwpU3D9\ngMmz124iTQVnjvB84e55JLL0xogaCDx1/nEFVoaUp80LN2nROmrf3a/ODtc53397\nCMcNy1wrhHcHV0/7BJZpVNFoQp289+TWjcQfP44aDvOASjkSydMVyQAbAoGBALUS\nNwD3VSXHdHlhQ6h4UVz3YmUjQfk7H8zueDS+1NDwqDXcVI4OZmI88vlkIqB+bXgW\nTNxrwfbV1jteWQ8kTZrtRrDbIPJhYB3jU+QkTSmP4XzyBi60fwOntoKPhYWyoM4a\nO48QClt3xjcMvXogbzyShu/AIrZNZ83ks32Dv0ZJAoGAeWMNurV8OiL9hKUxmbGy\n/B3RWiUEYy+XIRXUaeP+FXPTPTubCShm0C3YfVRLGsQOz6N27gOdfwccHdeiyOnC\npmkVnjFNF6evv5Qp7UiHu04O+AvQfeF94ZDDsPTJZL1L/UioAj8K8rwVpWLxhkmm\ny5So/AJAufvs0H2gZkKcxqQ=\n-----END PRIVATE KEY-----\n",
+    "client_email": "firestore-access@submissionmlgc-sanggulrotuap.iam.gserviceaccount.com",
+    "client_id": "117757155775580552124",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firestore-access%40submissionmlgc-sanggulrotuap.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+  }
+  

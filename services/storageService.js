@@ -1,7 +1,7 @@
 const { Storage } = require("@google-cloud/storage");
 const path = require("path");
 
-const storageKeyPath = path.resolve(__dirname, "../storageKey.json");
+const storageKeyPath = path.resolve(__dirname, "../utils/storage-key.json");
 const storage = new Storage({ keyFilename: storageKeyPath });
 const bucketName = "ml-models-asclepius";
 const bucket = storage.bucket(bucketName);

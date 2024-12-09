@@ -1,6 +1,7 @@
 const tf = require("@tensorflow/tfjs-node");
 
-const modelUrl = "https://storage.googleapis.com/ml-models-asclepius/models/model.json";
+const modelUrl =
+  "https://storage.googleapis.com/ml-models-asclepius/models/model.json";
 let model;
 
 const loadModel = async () => {
@@ -22,7 +23,9 @@ const predictImage = async (buffer) => {
 
   return {
     result: isCancer ? "Cancer" : "Non-cancer",
-    suggestion: isCancer ? "Segera periksa ke dokter!" : "Penyakit kanker tidak terdeteksi.",
+    suggestion: isCancer
+      ? "Segera periksa ke dokter!"
+      : "Penyakit kanker tidak terdeteksi.",
   };
 };
 

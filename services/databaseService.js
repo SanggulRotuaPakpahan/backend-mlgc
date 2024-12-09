@@ -1,7 +1,7 @@
 const admin = require("firebase-admin");
 const path = require("path");
 
-const databaseKeyPath = path.resolve(__dirname, "../databaseKey.json");
+const databaseKeyPath = path.resolve(__dirname, "../utils/database-key.json");
 admin.initializeApp({
   credential: admin.credential.cert(require(databaseKeyPath)),
 });
@@ -16,7 +16,7 @@ const getPredictionHistories = async () => {
     const snapshot = await db.collection("predictions").get();
     const histories = [];
 
-    snapshot.forEach(doc => {
+    snapshot.forEach((doc) => {
       const data = doc.data();
       histories.push({
         id: doc.id,
